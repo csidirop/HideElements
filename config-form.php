@@ -92,6 +92,31 @@
                 ); ?>
             </td>
         </tr>
-	<?php endforeach; ?>
+    <?php endforeach; ?>
     </tbody>
 </table>
+
+<!-- Add Check/Uncheck All functionality -->
+<script type="text/javascript">
+    function toggleCheckboxesByName(sourceCheckbox, column) {
+        // Get all checkboxes with name attribute starting with columns value
+        const checkboxes = document.querySelectorAll('input[type="checkbox"][name^="'+column+'"]');
+
+        // Loop through and set their checked property
+        for (let i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = sourceCheckbox.checked;
+        }
+    }
+</script>
+
+<div class="field">
+    <div class="two columns omega">
+        <label>Check/Uncheck: </label>
+    </div>
+    <div class="inputs five columns omega">
+        <label><input type="checkbox" onclick="toggleCheckboxesByName(this, 'form')"> form</label>
+        <label><input type="checkbox" onclick="toggleCheckboxesByName(this, 'admin')"> admin</label>
+        <label><input type="checkbox" onclick="toggleCheckboxesByName(this, 'public')"> public</label>
+        <label><input type="checkbox" onclick="toggleCheckboxesByName(this, 'search')"> search</label>
+    </div>
+</div>
